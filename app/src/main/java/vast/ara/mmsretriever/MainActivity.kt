@@ -66,20 +66,20 @@ class MainActivity : AppCompatActivity() {
         val mmsInboxTimestamp = java.lang.Long.valueOf(mmsInboxQuery.getString(2)) * 1000
         val mmsSentTimestamp = java.lang.Long.valueOf(mmsSentQuery.getString(2)) * 1000
 
-        if(mmsQuery!!.moveToFirst()) {
+        if(mmsSentQuery!!.moveToFirst()) {
             do{
                 for (i in 0..50) {
                     try{
-                        val test = java.lang.Long.valueOf(mmsQuery.getString(i))
+                        val test = java.lang.Long.valueOf(mmsSentQuery.getString(i))
                         Log.d("test", i.toString() + " : " + test)
                     }
                     catch (e: Exception) { }
                     catch (e : IndexOutOfBoundsException) {
-                        val buff = getAddressNumber(mmsQuery.getString(0)) ?: "no number"
+                        val buff = getAddressNumber(mmsSentQuery.getString(0)) ?: "no number"
                         Log.d("test", "timestamp error on " + buff)
                     }
                 }
-            } while (mmsQuery.moveToNext())
+            } while (mmsSentQuery.moveToNext())
         }
 
         /*
